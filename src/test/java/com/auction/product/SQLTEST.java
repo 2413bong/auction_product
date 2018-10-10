@@ -1,3 +1,4 @@
+
 package com.auction.product;
 
 import static org.junit.Assert.assertEquals;
@@ -65,11 +66,13 @@ public class SQLTEST {
 //		assertEquals(liList.size(), 3);
 //	}
 
+
 	@Test
 	public void ssTest() {
 		List<ATProductInfo> selectproductList = ss.selectList("SQL.ATProductInfo.selectATProductInfo");
 		assertEquals(selectproductList.size(), 0);
 	}
+
 //	@Test
 //	public void insertTest() {
 //		ATProductInfo li = new ATProductInfo();
@@ -87,6 +90,7 @@ public class SQLTEST {
 //		li.setProductCondition("테스트");
 //		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", li), 1);
 //	}
+
 	@Test
 	public void insertTest() {
 		ATProductInfo product = new ATProductInfo();
@@ -104,6 +108,7 @@ public class SQLTEST {
 		product.setProductCondition("테스트");
 		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", product), 1);
 	}
+
 //	@Test
 //	public void updateTest() {
 //		ATProductInfo li = new ATProductInfo();
@@ -139,15 +144,13 @@ public class SQLTEST {
 		product.setProductCondition("테스트");
 		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", product), 1);
 	}
-
 	@Test
 	public void deleteTest() {
 		ATProductInfo product = new ATProductInfo();
 		product.setProductNumber(1);
 		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", product), 1);
-
 	}*/
-=======
+
 //	@Test
 //	public void deleteTest() {
 //		ATProductInfo li = new ATProductInfo();
@@ -155,6 +158,7 @@ public class SQLTEST {
 //		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", li), 1);
 //
 //	}
+
 
 }
 
