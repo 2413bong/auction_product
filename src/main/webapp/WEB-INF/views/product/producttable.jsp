@@ -188,7 +188,7 @@ window.addEventListener('load',function(){
 //						initList();
 						locationhref="/url/atproductinfo:list"; //기존방식 리스트를 다시 들어가는거
 
-					}`
+					}
 				}
 			});
 //			var au = new AjaxUtil( {
