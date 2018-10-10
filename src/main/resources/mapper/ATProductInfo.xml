@@ -8,29 +8,29 @@
 		select * from product
 		<where>
 			<if test="productname !=null">ProductName 'like%' ||
-				#{ProductName} || '%'</if>
-			<if test="ProductCategory !=null">ProductCategory 'like%' ||
-				#{ProductCategory} || '%'</if>
-			<if test="ProductCode !=null">ProductCode 'like%' ||
-				#{ProductCode} || '%'</if>
-			<if test="ProductQuantity !=null">ProductQuantity 'like%' ||
-				#{ProductQuantity} || '%'</if>
-			<if test="ProductDate !=null">ProductDate 'like%' ||
-				#{ProductDate} || '%'</if>
-			<if test="ProductLowestPrice !=null">ProductLowestPrice 'like%' ||
-				#{ProductLowestPrice} || '%'
+				#{productName} || '%'</if>
+			<if test="productCategory !=null">ProductCategory 'like%' ||
+				#{productCategory} || '%'</if>
+			<if test="productCode !=null">ProductCode 'like%' ||
+				#{productCode} || '%'</if>
+			<if test="productQuantity !=null">ProductQuantity 'like%' ||
+				#{productQuantity} || '%'</if>
+			<if test="productDate !=null">ProductDate 'like%' ||
+				#{productDate} || '%'</if>
+			<if test="productLowestPrice !=null">ProductLowestPrice 'like%' ||
+				#{productLowestPrice} || '%'
 			</if>
-			<if test="ProductHopefulPrice !=null">ProductHopefulPrice 'like%' ||
-				#{ProductHopefulPrice} ||
+			<if test="productHopefulPrice !=null">ProductHopefulPrice 'like%' ||
+				#{productHopefulPrice} ||
 				'%'</if>
-			<if test="ProductImage !=null">ProductImage 'like%' ||
-				#{ProductImage} || '%'</if>
-			<if test="ProductDesc !=null">ProductDesc 'like%' ||
-				#{ProductDesc} || '%'</if>
-			<if test="ProductBrand !=null">ProductBrand 'like%' ||
-				#{ProductBrand} || '%'</if>
-			<if test="ProductCondition !=null">ProductCondition 'like%' ||
-				#{ProductCondition} || '%'
+			<if test="productImage !=null">ProductImage 'like%' ||
+				#{productImage} || '%'</if>
+			<if test="productDesc !=null">ProductDesc 'like%' ||
+				#{productDesc} || '%'</if>
+			<if test="productBrand !=null">ProductBrand 'like%' ||
+				#{productBrand} || '%'</if>
+			<if test="productCondition !=null">ProductCondition 'like%' ||
+				#{productCondition} || '%'
 			</if>
 		</where>
 		order by ProductNumber
@@ -39,51 +39,51 @@
 		insert into
 		
 		product(ProductNumber,productname,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
-		values(SEQ_Product_ProductNumber.nextval,#{ProductName},#{ProductCategory},#{ProductCode},#{ProductQuantity},#{ProductDate},#{ProductLowestPrice},#{ProductHopefulPrice},#{ProductImage},#{ProductDesc},#{ProductBrand},#{ProductCondition})
+		values(SEQ_Product_ProductNumber.nextval,#{productName},#{productCategory},#{productCode},#{productQuantity},#{productDate},#{productLowestPrice},#{productHopefulPrice},#{productImage},#{productDesc},#{productBrand},#{productCondition})
 
 	</insert>
 	<update id="updateATProductInfo" parameterType="product">
 		update product
 		<set>
-			<if test="ProductName !=null">ProductName =
-				#{ProductName},
+			<if test="productName !=null">ProductName =
+				#{productName},
 			</if>
-			<if test="ProductCategory !=null">ProductCategory =
-				#{ProductCategory},
+			<if test="productCategory !=null">ProductCategory =
+				#{productCategory},
 			</if>
-			<if test="ProductCode !=null">ProductCode =
-				#{ProductCode},
+			<if test="productCode !=null">ProductCode =
+				#{productCode},
 			</if>
-			<if test="ProductQuantity !=null">ProductQuantity =
-				#{ProductQuantity},
+			<if test="productQuantity !=null">ProductQuantity =
+				#{productQuantity},
 			</if>
-			<if test="ProductDate !=null">ProductDate =
-				#{ProductDate},
+			<if test="productDate !=null">ProductDate =
+				#{productDate},
 			</if>
-			<if test="ProductLowestPrice !=null">ProductLowestPrice =
-				#{ProductLowestPrice},
+			<if test="productLowestPrice !=null">ProductLowestPrice =
+				#{productLowestPrice},
 			</if>
-			<if test="ProductHopefulPrice !=null">ProductHopefulPrice =
-				#{ProductHopefulPrice},
+			<if test="productHopefulPrice !=null">ProductHopefulPrice =
+				#{productHopefulPrice},
 			</if>
-			<if test="ProductImage !=null">ProductImage =
-				#{ProductImage},
+			<if test="productImage !=null">ProductImage =
+				#{productImage},
 			</if>
-			<if test="ProductDesc !=null">ProductDesc =
-				#{ProductDesc},
+			<if test="productDesc !=null">ProductDesc =
+				#{productDesc},
 			</if>
-			<if test="ProductBrand !=null">ProductBrand =
-				#{ProductBrand},
+			<if test="productBrand !=null">ProductBrand =
+				#{productBrand},
 			</if>
-			<if test="ProductCondition !=null">ProductCondition =
-				#{ProductCondition},
+			<if test="productCondition !=null">ProductCondition =
+				#{productCondition},
 			</if>
 		</set>
-		where ProductNumber=#{ProductNumber}
+		where ProductNumber=#{productNumber}
 	</update>
 	<delete id="deleteATProductInfo" parameterType="product">
 		delete from
 		product
-		where ProductNumber=#{ProductNumber}
+		where ProductNumber=#{productNumber}
 	</delete>
 </mapper>
