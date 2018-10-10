@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQL.ATProductInfo">
+	<select id="selectATProductInfo" resultType="product"
+		parameterType="product">
+		select * from product
+		<where>
+			<if test="productname !=null">productname 'like%' ||
+				#{productname} || '%'</if>
+			<if test="ProductCategory !=null">ProductCategory 'like%' ||
+				#{ProductCategory} || '%'</if>
+			<if test="ProductCode !=null">ProductCode 'like%' ||
+				#{ProductCode} || '%'</if>
+			<if test="ProductQuantity !=null">ProductQuantity 'like%' ||
+				#{ProductQuantity} || '%'</if>
+			<if test="ProductDate !=null">ProductDate 'like%' ||
+				#{ProductDate} || '%'</if>
+			<if test="ProductLowestPrice !=null">ProductLowestPrice 'like%' ||
+				#{ProductLowestPrice} || '%'
+			</if>
+			<if test="ProductHopefulPrice !=null">ProductHopefulPrice 'like%' ||
+				#{ProductHopefulPrice} ||
+				'%'</if>
+			<if test="ProductImage !=null">ProductImage 'like%' ||
+				#{ProductImage} || '%'</if>
+			<if test="ProductDesc !=null">ProductDesc 'like%' ||
+				#{ProductDesc} || '%'</if>
+			<if test="ProductBrand !=null">ProductBrand 'like%' ||
+				#{ProductBrand} || '%'</if>
+			<if test="ProductCondition !=null">ProductCondition 'like%' ||
+				#{ProductCondition} || '%'
+			</if>
+		</where>
+		order by productnumber
+	</select>
+	<insert id="insertATProductInfo" parameterType="product">
+		insert into
+		level_info(productnumber,productname,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
+		values(productnumber.nextval,#{productname},#{ProductCategory},#{ProductCode},#{ProductQuantity},#{ProductDate},#{ProductLowestPrice},#{ProductHopefulPrice},#{ProductImage},#{ProductDesc},#{ProductBrand},#{ProductCondition})
+
+	</insert>
+	<update id="updateATProductInfo" parameterType="product">
+		update level_info
+		<set>
+			<if test="productname !=null">productname =
+				#{productname},
+			</if>
+			<if test="ProductCategory !=null">ProductCategory =
+				#{ProductCategory},
+			</if>
+			<if test="ProductCode !=null">ProductCode =
+				#{ProductCode},
+			</if>
+			<if test="ProductQuantity !=null">ProductQuantity =
+				#{ProductQuantity},
+			</if>
+			<if test="ProductDate !=null">ProductDate =
+				#{ProductDate},
+			</if>
+			<if test="ProductLowestPrice !=null">ProductLowestPrice =
+				#{ProductLowestPrice},
+			</if>
+			<if test="ProductHopefulPrice !=null">ProductHopefulPrice =
+				#{ProductHopefulPrice},
+			</if>
+			<if test="ProductImage !=null">ProductImage =
+				#{ProductImage},
+			</if>
+			<if test="ProductDesc !=null">ProductDesc =
+				#{ProductDesc},
+			</if>
+			<if test="ProductBrand !=null">ProductBrand =
+				#{ProductBrand},
+			</if>
+			<if test="ProductCondition !=null">ProductCondition =
+				#{ProductCondition},
+			</if>
+		</set>
+		where productnumber=#{productnumber}
+	</update>
+	<delete id="deleteATProductInfo" parameterType="product">
+		delete from
+		product
+		where productnumber=#{productnumber}
+	</delete>
+</mapper>
