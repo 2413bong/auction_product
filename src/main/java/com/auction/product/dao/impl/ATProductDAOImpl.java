@@ -2,17 +2,22 @@ package com.auction.product.dao.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.auction.product.dao.ATProductDAO;
 import com.auction.product.vo.ATProductInfo;
 
+@Repository
 public class ATProductDAOImpl implements ATProductDAO{
     
 	
 	@Autowired
 	private SqlSessionTemplate SqlSessionTemplate;
+	
+	
 	@Override
 	public List<ATProductInfo> getATProductInfoList(ATProductInfo ATProductInfo) {
 		// TODO Auto-generated method stub

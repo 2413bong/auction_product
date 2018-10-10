@@ -4,22 +4,16 @@ package com.auction.product;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.sql.Connection;
-import java.util.List;
-
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.auction.product.vo.ATProductInfo;
-
-import net.sf.log4jdbc.Log4jdbcProxyDataSource;
 
 
 
@@ -31,26 +25,12 @@ import net.sf.log4jdbc.Log4jdbcProxyDataSource;
 @ContextConfiguration("/root-context.xml")
 public class SQLTEST {
 
-	@Autowired
-	@Qualifier("dataSourceProxy")//1 @Quaproductfier로 구분짓는다
-	private Log4jdbcProxyDataSource ds;//2 @Autowired는 클래스명으로 구분짓는다
 
 	@Autowired
 	private SqlSessionFactory ssf;
 	@Autowired
 	private SqlSession ss;
 
-	@Test
-	public void test() {
-		try {
-			Connection con = ds.getConnection();
-			con = null;
-			System.out.println("테스트");
-			
-		}catch(Exception e) {
-			fail(e.getMessage());
-		}
-	}
 
 	public void ssfTest() {
 		try (SqlSession ss = ssf.openSession()) {

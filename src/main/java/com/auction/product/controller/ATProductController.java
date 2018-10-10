@@ -17,6 +17,7 @@ import com.auction.product.vo.ATProductInfo;
 
 @Controller
 public class ATProductController {
+	
 	@Autowired
 	private ATProductService ATProductService;
 	

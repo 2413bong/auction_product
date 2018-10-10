@@ -2,16 +2,22 @@ package com.auction.product.service.impl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.auction.product.dao.ATProductDAO;
 import com.auction.product.service.ATProductService;
 import com.auction.product.vo.ATProductInfo;
 
+
+@Service
+
 public class ATProductServiceImpl implements ATProductService{
     
 	@Autowired
 	private ATProductDAO ATProductDAO;
+	
 	@Override
 	public List<ATProductInfo> getATProductInfoList(ATProductInfo ATProductInfo) {
 		// TODO Auto-generated method stub
