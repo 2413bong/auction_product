@@ -13,7 +13,7 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/bts3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../bts3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
