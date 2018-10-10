@@ -1,3 +1,4 @@
+
 package com.auction.product;
 
 import static org.junit.Assert.assertEquals;
@@ -143,13 +144,11 @@ public class SQLTEST {
 		product.setProductCondition("테스트");
 		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", product), 1);
 	}
-
 	@Test
 	public void deleteTest() {
 		ATProductInfo product = new ATProductInfo();
 		product.setProductNumber(1);
 		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", product), 1);
-
 	}*/
 
 //	@Test
