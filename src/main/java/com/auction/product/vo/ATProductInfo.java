@@ -1,5 +1,8 @@
 package com.auction.product.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("Product")
 public class ATProductInfo {
 	private Integer ProductNumber;
 	private String ProductName;
