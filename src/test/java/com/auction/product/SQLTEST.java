@@ -91,40 +91,24 @@ public class SQLTEST {
 //		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", li), 1);
 //	}
 
+	
 //	@Test
-//	public void insertTest() {
-//		ATProductInfo product = new ATProductInfo();
-//		product.setProductNumber(1);
-//		product.setProductName("테스트 네임 ");
-//		product.setProductCategory("테스트 카테골");
-//		product.setProductCode("테스트 코드");
-//		product.setProductQuantity(1);
-//		product.setProductDate("1323");
-//		product.setProductLowestPrice(1);
-//		product.setProductHopefulPrice(5);
-//		product.setProductImage("테스트 이미지");
-//		product.setProductDesc("테스트 desc");
-//		product.setProductBrand("테스트 브랜드");
-//		product.setProductCondition("테스트컨디션");
-//		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", product), 1);
+//	public void updateTest() {
+//		ATProductInfo ATProductInfo = new ATProductInfo();
+//		ATProductInfo.setProductNumber(1);
+//		ATProductInfo.setProductName("테스트");
+//		ATProductInfo.setProductCategory("테스트");
+//		ATProductInfo.setProductCode("테스트");
+//		ATProductInfo.setProductQuantity(1);
+//		ATProductInfo.setProductDate("테스트");
+//		ATProductInfo.setProductLowestPrice(1);
+//		ATProductInfo.setProductHopefulPrice(5);
+//		ATProductInfo.setProductImage("테스트");
+//		ATProductInfo.setProductDesc("테스트");
+//		ATProductInfo.setProductBrand("테스트");
+//		ATProductInfo.setProductCondition("테스트");
+//		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", ATProductInfo), 1);
 //	}
-
-	@Test
-	public void updateTest() {
-		ATProductInfo ATProductInfo = new ATProductInfo();
-		ATProductInfo.setProductName("테스트");
-		ATProductInfo.setProductCategory("테스트");
-		ATProductInfo.setProductCode("테스트");
-		ATProductInfo.setProductQuantity(1);
-		ATProductInfo.setProductDate("테스트");
-		ATProductInfo.setProductLowestPrice(1);
-		ATProductInfo.setProductHopefulPrice(5);
-		ATProductInfo.setProductImage("테스트");
-		ATProductInfo.setProductDesc("테스트");
-		ATProductInfo.setProductBrand("테스트");
-		ATProductInfo.setProductCondition("테스트");
-		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", ATProductInfo), 1);
-	}
 
 /*	@Test
 	public void updateTest() {
@@ -150,13 +134,13 @@ public class SQLTEST {
 		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", product), 1);
 	}*/
 
-//	@Test
-//	public void deleteTest() {
-//		ATProductInfo li = new ATProductInfo();
-//		li.setProductNumber(1);
-//		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", li), 1);
-//
-//	}
+	@Test
+	public void deleteTest() {
+		ATProductInfo li = new ATProductInfo();
+		li.setProductNumber(1);
+		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", li), 1);
+
+	}
 
 
 }
