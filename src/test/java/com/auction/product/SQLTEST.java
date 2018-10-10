@@ -67,11 +67,11 @@ public class SQLTEST {
 //	}
 
 
-	@Test
-	public void ssTest() {
-		List<ATProductInfo> selectproductList = ss.selectList("SQL.ATProductInfo.selectATProductInfo");
-		assertEquals(selectproductList.size(), 0);
-	}
+//	@Test
+//	public void ssTest() {
+//		List<ATProductInfo> selectproductList = ss.selectList("SQL.ATProductInfo.selectATProductInfo");
+//		assertEquals(selectproductList.size(), 0);
+//	}
 
 //	@Test
 //	public void insertTest() {
@@ -91,41 +91,40 @@ public class SQLTEST {
 //		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", li), 1);
 //	}
 
-	@Test
-	public void insertTest() {
-		ATProductInfo product = new ATProductInfo();
-		product.setProductNumber(1);
-		product.setProductName("테스트 네임 ");
-		product.setProductCategory("테스트 카테골");
-		product.setProductCode("테스트 코드");
-		product.setProductQuantity(1);
-		product.setProductDate("1323");
-		product.setProductLowestPrice(1);
-		product.setProductHopefulPrice(5);
-		product.setProductImage("테스트 이미지");
-		product.setProductDesc("테스트 desc");
-		product.setProductBrand("테스트 브랜드");
-		product.setProductCondition("테스트컨디션");
-		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", product), 1);
-	}
-
 //	@Test
-//	public void updateTest() {
-//		ATProductInfo li = new ATProductInfo();
-//		li.setProductNumber(1);
-//		li.setProductName("테스트");
-//		li.setProductCategory("테스트");
-//		li.setProductCode("테스트");
-//		li.setProductQuantity(1);
-//		li.setProductDate("테스트");
-//		li.setProductLowestPrice(1);
-//		li.setProductHopefulPrice(5);
-//		li.setProductImage("테스트");
-//		li.setProductDesc("테스트");
-//		li.setProductBrand("테스트");
-//		li.setProductCondition("테스트");
-//		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", li), 1);
+//	public void insertTest() {
+//		ATProductInfo product = new ATProductInfo();
+//		product.setProductNumber(1);
+//		product.setProductName("테스트 네임 ");
+//		product.setProductCategory("테스트 카테골");
+//		product.setProductCode("테스트 코드");
+//		product.setProductQuantity(1);
+//		product.setProductDate("1323");
+//		product.setProductLowestPrice(1);
+//		product.setProductHopefulPrice(5);
+//		product.setProductImage("테스트 이미지");
+//		product.setProductDesc("테스트 desc");
+//		product.setProductBrand("테스트 브랜드");
+//		product.setProductCondition("테스트컨디션");
+//		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", product), 1);
 //	}
+
+	@Test
+	public void updateTest() {
+		ATProductInfo li = new ATProductInfo();
+		li.setProductName("테스트");
+		li.setProductCategory("테스트");
+		li.setProductCode("테스트");
+		li.setProductQuantity(1);
+		li.setProductDate("테스트");
+		li.setProductLowestPrice(1);
+		li.setProductHopefulPrice(5);
+		li.setProductImage("테스트");
+		li.setProductDesc("테스트");
+		li.setProductBrand("테스트");
+		li.setProductCondition("테스트");
+		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", li), 1);
+	}
 
 /*	@Test
 	public void updateTest() {

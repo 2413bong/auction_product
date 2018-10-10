@@ -7,8 +7,8 @@
 		parameterType="product">
 		select * from product
 		<where>
-			<if test="productname !=null">productname 'like%' ||
-				#{productname} || '%'</if>
+			<if test="productname !=null">ProductName 'like%' ||
+				#{ProductName} || '%'</if>
 			<if test="ProductCategory !=null">ProductCategory 'like%' ||
 				#{ProductCategory} || '%'</if>
 			<if test="ProductCode !=null">ProductCode 'like%' ||
@@ -33,20 +33,20 @@
 				#{ProductCondition} || '%'
 			</if>
 		</where>
-		order by productnumber
+		order by ProductNumber
 	</select>
 	<insert id="insertATProductInfo" parameterType="product">
 		insert into
 		
-		product(productnumber,productname,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
+		product(ProductNumber,productname,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
 		values(SEQ_Product_ProductNumber.nextval,#{ProductName},#{ProductCategory},#{ProductCode},#{ProductQuantity},#{ProductDate},#{ProductLowestPrice},#{ProductHopefulPrice},#{ProductImage},#{ProductDesc},#{ProductBrand},#{ProductCondition})
 
 	</insert>
 	<update id="updateATProductInfo" parameterType="product">
-		update level_info
+		update product
 		<set>
-			<if test="productname !=null">productname =
-				#{productname},
+			<if test="ProductName !=null">ProductName =
+				#{ProductName},
 			</if>
 			<if test="ProductCategory !=null">ProductCategory =
 				#{ProductCategory},
@@ -79,11 +79,11 @@
 				#{ProductCondition},
 			</if>
 		</set>
-		where productnumber=#{productnumber}
+		where ProductNumber=#{ProductNumber}
 	</update>
 	<delete id="deleteATProductInfo" parameterType="product">
 		delete from
 		product
-		where productnumber=#{productnumber}
+		where ProductNumber=#{ProductNumber}
 	</delete>
 </mapper>
