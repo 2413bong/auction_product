@@ -111,19 +111,19 @@ public class SQLTEST {
 
 	@Test
 	public void updateTest() {
-		ATProductInfo li = new ATProductInfo();
-		li.setProductName("테스트");
-		li.setProductCategory("테스트");
-		li.setProductCode("테스트");
-		li.setProductQuantity(1);
-		li.setProductDate("테스트");
-		li.setProductLowestPrice(1);
-		li.setProductHopefulPrice(5);
-		li.setProductImage("테스트");
-		li.setProductDesc("테스트");
-		li.setProductBrand("테스트");
-		li.setProductCondition("테스트");
-		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", li), 1);
+		ATProductInfo ATProductInfo = new ATProductInfo();
+		ATProductInfo.setProductName("테스트");
+		ATProductInfo.setProductCategory("테스트");
+		ATProductInfo.setProductCode("테스트");
+		ATProductInfo.setProductQuantity(1);
+		ATProductInfo.setProductDate("테스트");
+		ATProductInfo.setProductLowestPrice(1);
+		ATProductInfo.setProductHopefulPrice(5);
+		ATProductInfo.setProductImage("테스트");
+		ATProductInfo.setProductDesc("테스트");
+		ATProductInfo.setProductBrand("테스트");
+		ATProductInfo.setProductCondition("테스트");
+		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", ATProductInfo), 1);
 	}
 
 /*	@Test
