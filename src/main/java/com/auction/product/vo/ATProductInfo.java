@@ -13,7 +13,9 @@ public class ATProductInfo {
 	private String ProductDesc;
 	private String ProductBrand;
 	private String ProductCondition;
-
+	
+	public ATProductInfo() {}
+  
 	public ATProductInfo(Integer productNumber, String productName, String productCategory, String productCode,
 			Integer productQuantity, String productDate, Integer productLowestPrice, Integer productHopefulPrice,
 			String productImage, String productDesc, String productBrand, String productCondition) {
