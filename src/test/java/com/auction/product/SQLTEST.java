@@ -58,13 +58,40 @@ public class SQLTEST {
 			fail(e.getMessage());
 		}
 	}
+//
+//	@Test
+//	public void ssTest() {
+//		List<ATProductInfo> liList = ss.selectList("SQL.ATProductInfo.selectATProductInfo");
+//		assertEquals(liList.size(), 3);
+//	}
 
+<<<<<<< HEAD
 	@Test
 	public void ssTest() {
 		List<ATProductInfo> selectproductList = ss.selectList("SQL.ATProductInfo.selectATProductInfo");
 		assertEquals(selectproductList.size(), 0);
 	}
+=======
+//	@Test
+//	public void insertTest() {
+//		ATProductInfo li = new ATProductInfo();
+//		li.setProductNumber(1);
+//		li.setProductName("테스트");
+//		li.setProductCategory("테스트");
+//		li.setProductCode("테스트");
+//		li.setProductQuantity(1);
+//		li.setProductDate("테스트");
+//		li.setProductLowestPrice(1);
+//		li.setProductHopefulPrice(5);
+//		li.setProductImage("테스트");
+//		li.setProductDesc("테스트");
+//		li.setProductBrand("테스트");
+//		li.setProductCondition("테스트");
+//		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", li), 1);
+//	}
+>>>>>>> branch 'master' of https://github.com/2413bong/auction_product.git
 
+<<<<<<< HEAD
 	@Test
 	public void insertTest() {
 		ATProductInfo product = new ATProductInfo();
@@ -82,7 +109,27 @@ public class SQLTEST {
 		product.setProductCondition("테스트");
 		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", product), 1);
 	}
+=======
+//	@Test
+//	public void updateTest() {
+//		ATProductInfo li = new ATProductInfo();
+//		li.setProductNumber(1);
+//		li.setProductName("테스트");
+//		li.setProductCategory("테스트");
+//		li.setProductCode("테스트");
+//		li.setProductQuantity(1);
+//		li.setProductDate("테스트");
+//		li.setProductLowestPrice(1);
+//		li.setProductHopefulPrice(5);
+//		li.setProductImage("테스트");
+//		li.setProductDesc("테스트");
+//		li.setProductBrand("테스트");
+//		li.setProductCondition("테스트");
+//		assertEquals(ss.update("SQL.ATProductInfo.updateATProductInfo", li), 1);
+//	}
+>>>>>>> branch 'master' of https://github.com/2413bong/auction_product.git
 
+<<<<<<< HEAD
 /*	@Test
 	public void updateTest() {
 		ATProductInfo product = new ATProductInfo();
@@ -108,6 +155,15 @@ public class SQLTEST {
 		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", product), 1);
 
 	}*/
+=======
+//	@Test
+//	public void deleteTest() {
+//		ATProductInfo li = new ATProductInfo();
+//		li.setProductNumber(1);
+//		assertEquals(ss.delete("SQL.ATProductInfo.deleteATProductInfo", li), 1);
+//
+//	}
+>>>>>>> branch 'master' of https://github.com/2413bong/auction_product.git
 
 }
 
