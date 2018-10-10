@@ -38,8 +38,8 @@
 	<insert id="insertATProductInfo" parameterType="product">
 		insert into
 		
-		level_info(productnumber,productname,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
-		values(SEQ_Product_ProductNumber.nextval,#{Productname},#{ProductCategory},#{ProductCode},#{ProductQuantity},#{ProductDate},#{ProductLowestPrice},#{ProductHopefulPrice},#{ProductImage},#{ProductDesc},#{ProductBrand},#{ProductCondition})
+		product(productnumber,productname,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
+		values(SEQ_Product_ProductNumber.nextval,#{ProductName},#{ProductCategory},#{ProductCode},#{ProductQuantity},#{ProductDate},#{ProductLowestPrice},#{ProductHopefulPrice},#{ProductImage},#{ProductDesc},#{ProductBrand},#{ProductCondition})
 
 	</insert>
 	<update id="updateATProductInfo" parameterType="product">

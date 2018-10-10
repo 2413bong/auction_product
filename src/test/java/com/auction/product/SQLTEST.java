@@ -95,17 +95,17 @@ public class SQLTEST {
 	public void insertTest() {
 		ATProductInfo product = new ATProductInfo();
 		product.setProductNumber(1);
-		product.setProductName("테스트");
-		product.setProductCategory("테스트");
-		product.setProductCode("테스트");
+		product.setProductName("테스트 네임 ");
+		product.setProductCategory("테스트 카테골");
+		product.setProductCode("테스트 코드");
 		product.setProductQuantity(1);
-		product.setProductDate("테스트");
+		product.setProductDate("1323");
 		product.setProductLowestPrice(1);
 		product.setProductHopefulPrice(5);
-		product.setProductImage("테스트");
-		product.setProductDesc("테스트");
-		product.setProductBrand("테스트");
-		product.setProductCondition("테스트");
+		product.setProductImage("테스트 이미지");
+		product.setProductDesc("테스트 desc");
+		product.setProductBrand("테스트 브랜드");
+		product.setProductCondition("테스트컨디션");
 		assertEquals(ss.insert("SQL.ATProductInfo.insertATProductInfo", product), 1);
 	}
 
