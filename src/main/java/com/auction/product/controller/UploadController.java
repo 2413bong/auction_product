@@ -2,10 +2,10 @@ package com.auction.product.controller;
 
 import java.io.File;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

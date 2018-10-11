@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,7 +60,7 @@ window.addEventListener('load',function(){
 						html += '<td><input type="text" id="productDesc'+product.productnumber+'" value="' + product.productDesc + '"></td>';
 						html += '<td><input type="text" id="productBrand'+product.productnumber+'" value="' + product.productBrand + '"></td>';
 						html += '<td><input type="text" id="productCondition'+product.productnumber+'" value="' + product.productCondition + '"></td>';
-						html += '<td><button type="button" onclick="updateATProductInfo('+ product.productnumber +')">¼öÁ¤</button><button type="button" onclick="deleteATProductInfo('+product.productnumber+')">»èÁ¦</button></td>';
+						html += '<td><button type="button" onclick="updateATProductInfo('+ product.productnumber +')">ìˆ˜ì •</button><button type="button" onclick="deleteATProductInfo('+product.productnumber+')">ì‚­ì œ</button></td>';
 						html += '</tr>';
 					}
 					document.querySelector('#ATProductBody').insertAdjacentHTML('beforeend',html);
@@ -71,32 +71,32 @@ window.addEventListener('load',function(){
 
 </script>
 <body>
-	°Ë»ö :
+	ê²€ìƒ‰ :
 	<input type="text" name="ATProductList">
-	<button>°Ë»ö</button>
+	<button>ê²€ìƒ‰</button>
 	<table border="1">
 		<thead>
 			<tr>
-				<th>Á¦Ç° ¹øÈ£</th>
-				<th>Á¦Ç° ¸í</th>
-				<th>Á¦Ç° ºĞ·ù</th>
-				<th>Á¦Ç° ÄÚµå</th>
-				<th>Á¦Ç° ¼ö·®</th>
-				<th>Á¦Ç° µî·ÏÀÏ</th>
-				<th>Á¦Ç° ÃÖÀú°¡</th>
-				<th>Á¦Ç° Èñ¸Á°¡</th>
-				<th>Á¦Ç° ÀÌ¹ÌÁö</th>
-				<th>Á¦Ç° ¼³¸í</th>
-				<th>Á¦Ç° ºê·£µå</th>
-				<th>Á¦Ç° »óÅÂ</th>
-				<th>¼öÁ¤/»èÁ¦</th>
+				<th>ì œí’ˆ ë²ˆí˜¸</th>
+				<th>ì œí’ˆ ëª…</th>
+				<th>ì œí’ˆ ë¶„ë¥˜</th>
+				<th>ì œí’ˆ ì½”ë“œ</th>
+				<th>ì œí’ˆ ìˆ˜ëŸ‰</th>
+				<th>ì œí’ˆ ë“±ë¡ì¼</th>
+				<th>ì œí’ˆ ìµœì €ê°€</th>
+				<th>ì œí’ˆ í¬ë§ê°€</th>
+				<th>ì œí’ˆ ì´ë¯¸ì§€</th>
+				<th>ì œí’ˆ ì„¤ëª…</th>
+				<th>ì œí’ˆ ë¸Œëœë“œ</th>
+				<th>ì œí’ˆ ìƒíƒœ</th>
+				<th>ìˆ˜ì •/ì‚­ì œ</th>
 			</tr>
 		</thead>
 		<tbody id="ATProductBody">
 
 		</tbody>
 	</table>
-	<button onclick="addATProductInfo()">Á¦Ç° Ãß°¡</button>
+	<button onclick="addATProductInfo()">ì œí’ˆ ì¶”ê°€</button>
 	<script>
 	function addATProductInfo(){
 			var html ='<tr>'; 
@@ -112,7 +112,7 @@ window.addEventListener('load',function(){
 			html += '<td><input type="text" id="productDesc" value=""></td>';
 			html += '<td><input type="text" id="productBrand" value=""></td>';
 			html += '<td><input type="text" id="productCondition" value=""></td>';
-			html += '<td><button onclick="saveATProductInfo()">ÀúÀå</button></td>';
+			html += '<td><button onclick="saveATProductInfo()">ì €ì¥</button></td>';
 			html += '</tr>';
 			document.querySelector('ATProductBody').insertAdjacentHTML('beforeend',html);
 		}
@@ -139,7 +139,7 @@ window.addEventListener('load',function(){
 			param : params,
 			success : function(res){
 				if(res=='1'){
-					alert('ÀúÀå¿Ï·á');
+					alert('ì €ì¥ì™„ë£Œ');
 					location.href="/url/atproductinfo:list";
 					}
 	             }
@@ -179,14 +179,14 @@ window.addEventListener('load',function(){
 	function deleteATProductInfo(productnumber){
 				
 			var au = new AjaxUtil( {
-//				var conf={ ÀÌ°Ç µ¥ÀÌÅÍ¸¸ °¡Á®´ÙÁÖ´Â°Å
+//				var conf={ ì´ê±´ ë°ì´í„°ë§Œ ê°€ì ¸ë‹¤ì£¼ëŠ”ê±°
 				url : '/atproductinfo/'+ productnumber,
 				method:'DELETE',
 				success : function(res){
 					if(res=='1'){
-						alert('»èÁ¦¿Ï·á');
+						alert('ì‚­ì œì™„ë£Œ');
 //						initList();
-						locationhref="/url/atproductinfo:list"; //±âÁ¸¹æ½Ä ¸®½ºÆ®¸¦ ´Ù½Ã µé¾î°¡´Â°Å
+						locationhref="/url/atproductinfo:list"; //ê¸°ì¡´ë°©ì‹ ë¦¬ìŠ¤íŠ¸ë¥¼ ë‹¤ì‹œ ë“¤ì–´ê°€ëŠ”ê±°
 
 					}
 				}
