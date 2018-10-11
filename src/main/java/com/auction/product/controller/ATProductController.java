@@ -1,4 +1,4 @@
-/*package com.auction.product.controller;
+package com.auction.product.controller;
 
 import java.awt.PageAttributes.MediaType;
 import java.io.File;
@@ -66,88 +66,5 @@ public class ATProductController {
 		return ATProductService.updateATProductInfo(ATProductInfo); 
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String uploadAjax(MultipartFile file, String str, HttpSession session,
-			HttpServletRequest request, Model model) throws Exception {
 
-		Logger.info("originalName: " + file.getOriginalFilename());
-
-			ResponseEntity<String> img_path = new ResponseEntity<>(
-					UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()),
-					HttpStatus.CREATED);
-			String user_imgPath = (String) img_path.getBody();
-
-			logger.info(user_imgPath);
-			UserVO vo = new UserVO();
-			vo.setUser_profileImagePath(user_imgPath);
-			UserVO id = (UserVO) session.getAttribute("login");
-			System.out.println(id.getUser_id());
-			vo.setUser_id(id.getUser_id());
-			logger.info("file name : " + user_imgPath);
-
-			return user_imgPath;
-	}
-
-	@ResponseBody
-	@RequestMapping("/displayFile")
-	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
-
-		InputStream in = null;
-		ResponseEntity<byte[]> entity = null;
-
-		logger.info("FILE NAME: " + fileName);
-
-		try {
-
-			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-
-			MediaType mType = MediaUtils.getMediaType(formatName);
-
-			HttpHeaders headers = new HttpHeaders();
-
-			in = new FileInputStream(uploadPath + fileName);
-
-			if (mType != null) {
-				headers.setContentType(mType);
-			} else {
-
-				fileName = fileName.substring(fileName.indexOf("_") + 1);
-				headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-				headers.add("Content-Disposition",
-						"attachment; filename=\"" + new String(fileName.getBytes("UTF-8"), "ISO-8859-1") + "\"");
-			}
-
-			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-		} finally {
-			in.close();
-		}
-		return entity;
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/deleteFile", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteFile(String fileName) {
-
-		logger.info("delete file: " + fileName);
-
-		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-
-		MediaType mType = MediaUtils.getMediaType(formatName);
-
-		if (mType != null) {
-
-			String front = fileName.substring(0, 12);
-			String end = fileName.substring(14);
-			new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
-		}
-
-		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
-
-		return new ResponseEntity<String>("deleted", HttpStatus.OK);
-	}
 }
-*/

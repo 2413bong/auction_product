@@ -96,27 +96,27 @@ window.addEventListener('load',function(){
 
 		</tbody>
 	</table>
-	<button onclick="addATProductInfo()">제품 추가</button>
-	<script>
-	function addATProductInfo(){
-			var html ='<tr>'; 
-			html +=	'<td> &nbsp;</td>';
-			html += '<td><input type="text" id="productName" value=""></td>';
-			html += '<td><input type="text" id="productCategory" value=""></td>';
-			html += '<td><input type="text" id="productCode" value=""></td>';
-			html += '<td><input type="text" id="productQuantity" value=""></td>';
-			html += '<td><input type="text" id="productDate" value=""></td>';
-			html += '<td><input type="text" id="productLowestPrice" value=""></td>';
-			html += '<td><input type="text" id="productHopefulPrice" value=""></td>';
-			html += '<td><input type="text" id="productImage" value=""></td>';
-			html += '<td><input type="text" id="productDesc" value=""></td>';
-			html += '<td><input type="text" id="productBrand" value=""></td>';
-			html += '<td><input type="text" id="productCondition" value=""></td>';
-			html += '<td><button onclick="saveATProductInfo()">저장</button></td>';
-			html += '</tr>';
-			document.querySelector('ATProductBody').insertAdjacentHTML('beforeend',html);
-		}
-	function saveATProductInfo(){
+	<button  type="button" onclick="location.href='/url/product:insert' "target="_blank">제품 추가</button>
+	<script>	
+	function addATProductInfo() {
+		var html = '<tr>';
+		html += '<td> &nbsp;</td>';
+		html += '<td><input type="text" id="productName" value=""></td>';
+		html += '<td><input type="text" id="productCategory" value=""></td>';
+		html += '<td><input type="text" id="productCode" value=""></td>';
+		html += '<td><input type="text" id="productQuantity" value=""></td>';
+		html += '<td><input type="text" id="productDate" value=""></td>';
+		html += '<td><input type="text" id="productLowestPrice" value=""></td>';
+		html += '<td><input type="text" id="productHopefulPrice" value=""></td>';
+		html += '<td><input type="text" id="productImage" value=""></td>';
+		html += '<td><input type="text" id="productDesc" value=""></td>';
+		html += '<td><input type="text" id="productBrand" value=""></td>';
+		html += '<td><input type="text" id="productCondition" value=""></td>';
+		html += '<td><button onclick="saveATProductInfo()">저장</button></td>';
+		html += '</tr>';
+		document.querySelector('ATProductBody').insertAdjacentHTML('beforeend', html);
+	}
+	function saveATProductInfo() {
 		var productname = document.querySelector("#productname").value;
 		var productcategory = document.querySelector("#productcategory").value;
 		var productcode = document.querySelector("#productcode").value;
@@ -128,27 +128,34 @@ window.addEventListener('load',function(){
 		var productdesc = document.querySelector("#productdesc").value;
 		var productbrand = document.querySelector("#productbrand").value;
 		var productcondition = document.querySelector("#productcondition").value;
-		var params = {productname:productname, productcategory:productcategory, productcode:productcode, productquantity:productquantity,
-				productdate:productdate, productlowestprice:productlowestprice,producthopefulprice:producthopefulprice,productimage:productimage,
-				productdesc:productdesc,productbrand:productbrand,productcondition:productcondition};
+		var params = {
+			productname : productname,
+			productcategory : productcategory,
+			productcode : productcode,
+			productquantity : productquantity,
+			productdate : productdate,
+			productlowestprice : productlowestprice,
+			producthopefulprice : producthopefulprice,
+			productimage : productimage,
+			productdesc : productdesc,
+			productbrand : productbrand,
+			productcondition : productcondition
+		};
 		params = JSON.stringify(params);
-		
-		var au = new AjaxUtil( {
+
+		var au = new AjaxUtil({
 			url : '/atproductinfo/',
-			method: 'POST',
+			method : 'POST',
 			param : params,
-			success : function(res){
-				if(res=='1'){
+			success : function(res) {
+				if (res == '1') {
 					alert('저장완료');
-					location.href="/url/atproductinfo:list";
-					}
-	             }
+					location.href = "/url/atproductinfo:list";
+				}
+			}
 		});
 		au.send();
 	}
-		
-
-		
 	function updateATProductInfo(productnumber){
 		var productname = document.querySelector("#productname" +productnumber).value;
 		var productcategory = document.querySelector("#productcategory"+productnumber).value;
