@@ -21,31 +21,31 @@ public class ATProductDAOImpl implements ATProductDAO{
 	@Override
 	public List<ATProductInfo> getATProductInfoList(ATProductInfo ATProductInfo) {
 		// TODO Auto-generated method stub
-		return SqlSessionTemplate.selectList("SQL.LEVELINFO.selectLevelInfo", ATProductInfo);
+		return SqlSessionTemplate.selectList("SQL.ATProductInfo.selectATProductInfo", ATProductInfo);
 	}
 
 	@Override
 	public int insertATProductInfo(ATProductInfo ATProductInfo) {
 		// TODO Auto-generated method stub
-		return SqlSessionTemplate.insert("SQL.LEVELINFO.insertLevelInfo", ATProductInfo);
+		return SqlSessionTemplate.insert("SQL.ATProductInfo.insertATProductInfo", ATProductInfo);
 	}
 
 	@Override
 	public int deleteATProductInfo(int ProductNumber) {
 		// TODO Auto-generated method stub
-		return SqlSessionTemplate.delete("SQL.LEVELINFO.deleteLevelInfo", ProductNumber);
+		return SqlSessionTemplate.delete("SQL.ATProductInfo.deleteATProductInfo", ProductNumber);
 	}
 
 	@Override
 	public int updateATProductInfo(ATProductInfo ATProductInfo) {
 		// TODO Auto-generated method stub
-		return SqlSessionTemplate.update("SQL.LEVELINFO.updateLevelInfo", ATProductInfo);
+		return SqlSessionTemplate.update("SQL.ATProductInfo.updateATProductInfo", ATProductInfo);
 	}
 
 	@Override
 	public ATProductInfo getATProductInfoList(Integer ProductNumber) {
 		// TODO Auto-generated method stub
-		return SqlSessionTemplate.selectOne("SQL.LEVELINFO.selectLevelInfo", ProductNumber);
+		return SqlSessionTemplate.selectOne("SQL.ATProductInfo.selectATProductInfo", ProductNumber);
 	}
 
 }
