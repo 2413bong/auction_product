@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<script>
-<c:if test="${!empty iCnt}">
-	<c:if test="${iCnt eq 1}">
-		alert("저장성공");
-		location.href="/url/atproductinfo:list";
-	</c:if>
-</c:if>
-</script>
 <style>
+
+
+input[type='file'] {
+	display: none;
+}
+
 input[type=text], select {
 	width: 60%;
 	padding: 12px 20px;
@@ -35,20 +34,7 @@ button[type=button] {
 button[type=button]:hover {
 	background-color: #45a049;
 }
-input[type=button] {
-	width: 60%;
-	background-color: #4CAF50;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
 
-input[type=button]:hover {
-	background-color: #45a049;
-}
 input[type=file] {
 	width: 60%;
 	background-color: #4CAF50;
@@ -75,7 +61,9 @@ div {
 	<h3>제품 등록 란</h3>
 
 	<div>
-			<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data"> <br />
+		<form id="fileForm" action="fileUpload" method="post"
+			enctype="multipart/form-data">
+			<br />
 			<!-- 1 -->
 			<label for="productName">제품 명</label> <input type="text"
 				id="productName" name="productName" placeholder="제품명을 입력해 주세요">
@@ -114,9 +102,10 @@ div {
 			<!-- 10 -->
 			<label for="productImage">제품 사진(이미지)</label> <input type="text"
 				id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
-			<br>
-				<input type="file" id="fileUp" /> <br />
-				 <input type="button" value="전송하기" onClick="fileSubmit();"> <br />
+			<br> <input type="file" id="fileUp" /> <br />
+			<label(for="uploader" data-file="Browse for a file")/> 
+			<input(type="file" name="uploader" id="uploader")/>
+			<!-- <input type="button" value="전송하기" onClick="fileSubmit();"> <br /> -->
 			<!-- 11 -->
 			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">

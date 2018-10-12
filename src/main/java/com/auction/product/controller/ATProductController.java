@@ -33,7 +33,7 @@ public class ATProductController {
 	@Autowired
 	private ATProductService ATProductService;
 	
-	@RequestMapping(value = "/atproductinfo", method=RequestMethod.GET)
+	@RequestMapping(value = "/ATProductInfo", method=RequestMethod.GET)
 	@ResponseBody
 	public List<ATProductInfo> getATProductInfoList(@ModelAttribute ATProductInfo ATProductInfo){
 		return ATProductService.getATProductInfoList(ATProductInfo);
