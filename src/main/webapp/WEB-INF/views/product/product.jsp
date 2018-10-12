@@ -5,7 +5,7 @@
 <script> 
 window.addEventListener('load',function(){
 		var au = new AjaxUtil( {
-			url : '/atproductinfo',
+			url : '/ATProductInfo',
 			success : function(res){
 				res = JSON.parse(res);
 				var html = '';
