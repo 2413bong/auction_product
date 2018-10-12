@@ -31,7 +31,9 @@
 	 		</bean>
 	 	</property>
 	</bean>
-	 
+	 <context:component-scan base-package="com.auction.product.sercvice"/>
+	 <context:component-scan base-package="com.auction.product.dao"/>
+	 <context:component-scan base-package="com.auction.product.vo"/>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSourceProxy"/>
 		<property name="configLocation" value="classpath:config/mybatis.xml"/>
