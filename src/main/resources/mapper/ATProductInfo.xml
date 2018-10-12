@@ -7,37 +7,33 @@
 		parameterType="product">
 		select * from product
 		<where>
-			<if test="productname !=null">ProductName 'like%' ||
-				#{productName} || '%'</if>
-			<if test="productCategory !=null">ProductCategory 'like%' ||
-				#{productCategory} || '%'</if>
-			<if test="productCode !=null">ProductCode 'like%' ||
-				#{productCode} || '%'</if>
-			<if test="productQuantity !=null">ProductQuantity 'like%' ||
-				#{productQuantity} || '%'</if>
-			<if test="productDate !=null">ProductDate 'like%' ||
-				#{productDate} || '%'</if>
-			<if test="productLowestPrice !=null">ProductLowestPrice 'like%' ||
-				#{productLowestPrice} || '%'
-			</if>
-			<if test="productHopefulPrice !=null">ProductHopefulPrice 'like%' ||
-				#{productHopefulPrice} ||
-				'%'</if>
-			<if test="productImage !=null">ProductImage 'like%' ||
-				#{productImage} || '%'</if>
-			<if test="productDesc !=null">ProductDesc 'like%' ||
-				#{productDesc} || '%'</if>
-			<if test="productBrand !=null">ProductBrand 'like%' ||
-				#{productBrand} || '%'</if>
-			<if test="productCondition !=null">ProductCondition 'like%' ||
-				#{productCondition} || '%'
-			</if>
+			<if test="productName !=null">ProductName 'like%' || #{productName} || '%'</if>
+			
+			<if test="productCategory !=null">ProductCategory 'like%' || #{productCategory} || '%'</if>
+			
+			<if test="productCode !=null">ProductCode 'like%' || #{productCode} || '%'</if>
+			
+			<if test="productQuantity !=null">ProductQuantity 'like%' || #{productQuantity} || '%'</if>
+			
+			<if test="productDate !=null">ProductDate 'like%' || #{productDate} || '%'</if>
+			
+			<if test="productLowestPrice !=null">ProductLowestPrice 'like%' || #{productLowestPrice} || '%'</if>
+			
+			<if test="productHopefulPrice !=null">ProductHopefulPrice 'like%' ||#{productHopefulPrice} ||'%'</if>
+			
+			<if test="productImage !=null">ProductImage 'like%' || #{productImage} || '%'</if>
+			
+			<if test="productDesc !=null">ProductDesc 'like%' || #{productDesc} || '%'</if>
+			
+			<if test="productBrand !=null">ProductBrand 'like%' || #{productBrand} || '%'</if>
+			
+			<if test="productCondition !=null">ProductCondition 'like%' || #{productCondition} || '%'</if>
 		</where>
 		order by ProductNumber
 	</select>
 	<insert id="insertATProductInfo" parameterType="product">
 		insert into
-		
+
 		product(ProductNumber,productname,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
 		values(SEQ_Product_ProductNumber.nextval,#{productName},#{productCategory},#{productCode},#{productQuantity},#{productDate},#{productLowestPrice},#{productHopefulPrice},#{productImage},#{productDesc},#{productBrand},#{productCondition})
 

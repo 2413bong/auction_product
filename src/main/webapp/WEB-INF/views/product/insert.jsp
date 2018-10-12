@@ -36,7 +36,6 @@ button[type=button]:hover {
 	background-color: #45a049;
 }
 
-
 div {
 	border-radius: 5px;
 	background-color: #f2f2f2;
@@ -74,20 +73,20 @@ div {
 				id="productHopefulPrice" name="productHopefulPrice"
 				placeholder="제품 희망가(즉시 구매가)"> <br>
 			<!-- 7 -->
-			<label for="productImage">제품 이미지</label> <input type="text"
-				id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
-			<br>
-			<!-- 8 -->
 			<label for="productDesc">제품 설명</label> <input type="text"
 				id="productDesc" name="productDesc" placeholder="제품의 설명"> <br>
-			<!-- 9 -->
+			<!-- 8 -->
 			<label for="productBrand">제품 브랜드</label> <input type="text"
 				id="productBrand" name="productBrand" placeholder="제품명의 브랜드">
 			<br>
-			<!-- 10 -->
+			<!-- 9 -->
 			<label for="productCondition">제품 상태</label> <input type="text"
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
+			<!-- 10 -->
+			<label for="productImage">제품 이미지</label>
+			 <input type="text"	id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
+			<br>
 			<!-- 11 -->
 			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">
