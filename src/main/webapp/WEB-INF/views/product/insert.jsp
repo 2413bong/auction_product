@@ -60,9 +60,8 @@ div {
 
 	<h3>제품 등록 란</h3>
 
-	<div>
-		<form id="fileForm" action="fileUpload" method="post"
-			enctype="multipart/form-data">
+	<div style="text-align:right">
+		<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data">
 			<br />
 			<!-- 1 -->
 			<label for="productName">제품 명</label> <input type="text"
@@ -100,25 +99,43 @@ div {
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
 			<!-- 10 -->
-			<label for="productImage">제품 사진(이미지)</label> <input type="text"
-				id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
-			<br> <input type="file" id="fileUp" /> <br />
-			<label(for="uploader" data-file="Browse for a file")/> 
-			<input(type="file" name="uploader" id="uploader")/>
-			<!-- <input type="button" value="전송하기" onClick="fileSubmit();"> <br /> -->
+			<label for="productImage">제품 사진(이미지)</label>
+	<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data">
+        <input type="file" id="fileUp" name="fileUp"/><br/><br/>
+        <input type="file" id="fileUp2" name="fileUp2"/><br/><br/>
+        <input type="button" value="전송하기" onClick="fileSubmit();">
+    </form>
 			<!-- 11 -->
-			<label for="productCategory">제품 분류</label> <select
+			<label for="productCategory">제품 분류</label> 
+			<select
 				id="productCategory" name="productCategory">
 				<option value="australia">의류</option>
 				<option value="canada">가전제품</option>
 				<option value="usa">뭐가 있을까</option>
 			</select>
-			<button type="button" onclick="addATProductInfo">제품 등록</button>
+			<button type="button"  onclick="fileSubmit();">제품 등록</button>
 		</form>
 
 	</div>
 	<script>
-	
+	 function fileSubmit() {
+	        var formData = new FormData($("#fileForm")[0]);
+	        $.ajax({
+	            type : 'post',
+	            url : 'fileUpload',
+	            data : formData,
+	            processData : false,
+	            contentType : false,
+	            success : function(html) {
+	                alert("파일 업로드하였습니다.");
+	            },
+	            error : function(error) {
+	                alert("파일 업로드에 실패하였습니다.");
+	                console.log(error);
+	                console.log(error.status);
+	            }
+	        });
+	    }
 	</script>
 </body>
 </html>
