@@ -39,7 +39,14 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/WEB-INF/views/common/head.jspf</include-prelude>
+			<include-coda>/WEB-INF/views/common/bottom.jspf</include-coda>
+			<trim-directive-whitespaces>true</trim-directive-whitespaces>
+		</jsp-property-group>
+	</jsp-config>
 	<filter-mapping>
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>

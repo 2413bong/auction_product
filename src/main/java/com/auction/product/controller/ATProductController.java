@@ -61,6 +61,6 @@ public class ATProductController {
 		ATProductInfo.setProductNumber(ProductNumber);
 		return ATProductService.updateATProductInfo(ATProductInfo); 
 	}
-
 }
+
 

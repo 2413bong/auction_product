@@ -1,70 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-
-<title>Dashboard Template for Bootstrap</title>
-
-<!-- Bootstrap core CSS -->
-<link href="/resources/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="/resources/bootstrap/docs/examples/dashboard/dashboard.css"
-	rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script
-	src="/resources/bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<script>              
-var AjaxUtil = function(conf){ 
-	var xhr = new XMLHttpRequest(); 
-	var url = conf.url;
-	var method = conf.method?conf.method:'GET';
-	var param = conf.param?conf.param:'{}';
-	
-	var success= conf.success?conf.success:function(res){
-		alert(res);
-	}
-	var error = conf.error?conf.error:function(res){
-		alert(res);
-	}
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState==4){
-			if(xhr.status=="200"){
-				success(xhr.responseText);
-			}else{
-				error(xhr.responseText);
-			}
-		}
-	}
-	xhr.open(method,url);
-	if(method!="GET"){
-		xhr.setRequestHeader('Content-type','application/json;charset=utf-8');
-	}
-	this.send=function(){
-		xhr.send(param);
-	}
-}
-
-
- 
+    
+<script src="/resources/js/AjaxUtil.js"></script>
+<script> 
 window.addEventListener('load',function(){
 		var au = new AjaxUtil( {
 			url : '/atproductinfo',
@@ -75,7 +13,7 @@ window.addEventListener('load',function(){
 			
 					for(var product of res) {
 						html += '<tr>';
-						html += '<td>'+ product.productnumber+'</td>';
+						html += '<td>'+ product.productNumber+'</td>';
 						html += '<td>'+ product.productName + '</td>';
 						html += '<td>'+ product.productCategory + '</td>';
 						html += '<td>'+ product.productLowestPrice + '</td>';
@@ -168,16 +106,3 @@ window.addEventListener('load',function(){
 		</div>
 	</div>
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="/resources/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-	<script src="/resources/bootstrap/docs/assets/js/vendor/holder.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script
-		src="/resources/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
-</html>
