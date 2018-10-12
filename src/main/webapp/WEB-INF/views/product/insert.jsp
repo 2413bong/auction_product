@@ -92,12 +92,13 @@ input[type=file]:hover {
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
 			<!-- 10 -->
-			<label for="productImage">제품 사진(이미지)</label> 
-			<input type="text" id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
-			<br> <input type="file" id="fileUp" /> <br />
-			<label (for="uploader" data-file="Browse for a file" )/>
-			<input type="file" name="uploader" id="uploader" />
-			<!-- <input type="button" value="전송하기" onClick="fileSubmit();"> <br /> -->
+
+			<label for="productImage">제품 사진(이미지)</label>
+	<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data">
+        <input type="file" id="fileUp" name="fileUp"/><br/><br/>
+        <input type="file" id="fileUp2" name="fileUp2"/><br/><br/>
+        <input type="button" value="전송하기" onClick="fileSubmit();">
+    </form>
 			<!-- 11 -->
 			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">
