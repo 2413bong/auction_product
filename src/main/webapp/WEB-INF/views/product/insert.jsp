@@ -92,7 +92,6 @@ input[type=file]:hover {
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
 			<!-- 10 -->
-
 			<label for="productImage">제품 사진(이미지)</label>
 	<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data">
         <input type="file" id="fileUp" name="fileUp"/><br/><br/>
