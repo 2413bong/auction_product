@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html>
 <style>
-
-
 input[type='file'] {
 	display: none;
 }
@@ -16,7 +14,6 @@ input[type=text], select {
 	margin: 8px 0;
 	display: inline-block;
 	border: 1px solid #ccc;
-	border-radius: 4px;
 	box-sizing: border-box;
 }
 
@@ -49,19 +46,15 @@ input[type=file] {
 input[type=file]:hover {
 	background-color: #45a049;
 }
-
-div {
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 20px;
-}
 </style>
 <body>
 
 	<h3>제품 등록 란</h3>
-
-	<div style="text-align:right">
-		<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data">
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h1 class="page-header">Dashboard</h1>
+		<h2 class="sub-header">Section title</h2>
+		<form id="fileForm" action="fileUpload" method="post"
+			enctype="multipart/form-data">
 			<br />
 			<!-- 1 -->
 			<label for="productName">제품 명</label> <input type="text"
@@ -106,36 +99,19 @@ div {
         <input type="button" value="전송하기" onClick="fileSubmit();">
     </form>
 			<!-- 11 -->
-			<label for="productCategory">제품 분류</label> 
-			<select
+			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">
 				<option value="australia">의류</option>
 				<option value="canada">가전제품</option>
 				<option value="usa">뭐가 있을까</option>
 			</select>
-			<button type="button"  onclick="fileSubmit();">제품 등록</button>
+			<button type="button" onclick="addATProductInfo">제품 등록</button>
 		</form>
 
 	</div>
-	<script>
-	 function fileSubmit() {
-	        var formData = new FormData($("#fileForm")[0]);
-	        $.ajax({
-	            type : 'post',
-	            url : 'fileUpload',
-	            data : formData,
-	            processData : false,
-	            contentType : false,
-	            success : function(html) {
-	                alert("파일 업로드하였습니다.");
-	            },
-	            error : function(error) {
-	                alert("파일 업로드에 실패하였습니다.");
-	                console.log(error);
-	                console.log(error.status);
-	            }
-	        });
-	    }
-	</script>
+
+		<script>
+			
+		</script>
 </body>
 </html>

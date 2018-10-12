@@ -1,4 +1,4 @@
-package com.auction.product.controller;
+/*package com.auction.product.controller;
 
 import java.io.File;
 import java.util.Iterator;
@@ -55,7 +55,7 @@ public class ATProductController {
 		ATProductInfo.setProductNumber(ProductNumber);
 		return ATProductService.updateATProductInfo(ATProductInfo);
 	}
-
+//업로드
 	@RequestMapping(value = "/ajaxUpload")
 	public String ajaxUpload() {
 		return "ajaxUpload";
@@ -66,7 +66,7 @@ public class ATProductController {
 
 		// 저장 경로 설정
 		String root = multi.getSession().getServletContext().getRealPath("/");
-		String path = root + "resources/upload/";
+		String path = root + "resources/img/";
 
 		String newFileName = ""; // 업로드 되는 파일명
 
@@ -96,4 +96,6 @@ public class ATProductController {
 
 		return "ajaxUpload";
 	}
+	//업로드
 }
+*/
