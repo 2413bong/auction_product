@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html>
 <style>
-
-
 input[type='file'] {
 	display: none;
 }
@@ -16,7 +14,6 @@ input[type=text], select {
 	margin: 8px 0;
 	display: inline-block;
 	border: 1px solid #ccc;
-	border-radius: 4px;
 	box-sizing: border-box;
 }
 
@@ -49,18 +46,13 @@ input[type=file] {
 input[type=file]:hover {
 	background-color: #45a049;
 }
-
-div {
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 20px;
-}
 </style>
 <body>
 
 	<h3>제품 등록 란</h3>
-
-	<div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h1 class="page-header">Dashboard</h1>
+		<h2 class="sub-header">Section title</h2>
 		<form id="fileForm" action="fileUpload" method="post"
 			enctype="multipart/form-data">
 			<br />
@@ -100,11 +92,11 @@ div {
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
 			<!-- 10 -->
-			<label for="productImage">제품 사진(이미지)</label> <input type="text"
-				id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
+			<label for="productImage">제품 사진(이미지)</label> 
+			<input type="text" id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
 			<br> <input type="file" id="fileUp" /> <br />
-			<label(for="uploader" data-file="Browse for a file")/> 
-			<input(type="file" name="uploader" id="uploader")/>
+			<label (for="uploader" data-file="Browse for a file" )/>
+			<input type="file" name="uploader" id="uploader" />
 			<!-- <input type="button" value="전송하기" onClick="fileSubmit();"> <br /> -->
 			<!-- 11 -->
 			<label for="productCategory">제품 분류</label> <select
@@ -117,8 +109,9 @@ div {
 		</form>
 
 	</div>
-	<script>
-	
-	</script>
+
+		<script>
+			
+		</script>
 </body>
 </html>
