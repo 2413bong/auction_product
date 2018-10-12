@@ -35,6 +35,34 @@ button[type=button] {
 button[type=button]:hover {
 	background-color: #45a049;
 }
+input[type=button] {
+	width: 60%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=button]:hover {
+	background-color: #45a049;
+}
+input[type=file] {
+	width: 60%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=file]:hover {
+	background-color: #45a049;
+}
 
 div {
 	border-radius: 5px;
@@ -47,7 +75,7 @@ div {
 	<h3>제품 등록 란</h3>
 
 	<div>
-		<form action="/action_page.php">
+			<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data"> <br />
 			<!-- 1 -->
 			<label for="productName">제품 명</label> <input type="text"
 				id="productName" name="productName" placeholder="제품명을 입력해 주세요">
@@ -84,9 +112,11 @@ div {
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
 			<!-- 10 -->
-			<label for="productImage">제품 이미지</label>
-			 <input type="text"	id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
+			<label for="productImage">제품 사진(이미지)</label> <input type="text"
+				id="productImage" name="productImage" placeholder="제품의 이미지 넣을 버튼만들자">
 			<br>
+				<input type="file" id="fileUp" /> <br />
+				 <input type="button" value="전송하기" onClick="fileSubmit();"> <br />
 			<!-- 11 -->
 			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">
@@ -96,6 +126,7 @@ div {
 			</select>
 			<button type="button" onclick="addATProductInfo">제품 등록</button>
 		</form>
+
 	</div>
 	<script>
 	
