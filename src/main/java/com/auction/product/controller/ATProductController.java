@@ -61,10 +61,6 @@ public class ATProductController {
 		ATProductInfo.setProductNumber(ProductNumber);
 		return ATProductService.updateATProductInfo(ATProductInfo); 
 	}
-<<<<<<< HEAD
-	
+}
 
-}
-=======
-}
->>>>>>> branch 'master' of https://github.com/2413bong/auction_product.git
+
