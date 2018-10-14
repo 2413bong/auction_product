@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQL.BProductSQL">
+	<select id="selectList" resultType="product"
+		parameterType="product">
+		select * from product
+	</select>
+	
+	<select id="selectInfo" resultType="product"
+		parameterType="product">
+		select * from product where productNumber =#{productNumber}
+	</select>
+	<insert id="insert" parameterType="product">
+		insert into
+
+		product(ProductNumber,productName,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
+		values(SEQ_Product_ProductNumber.nextval,#{productName},#{productCategory},#{productCode},#{productQuantity},#{productDate},#{productLowestPrice},#{productHopefulPrice},#{productImage},#{productDesc},#{productBrand},#{productCondition})
+
+	</insert>
+	<update id="update" parameterType="product">
+		update product
+		<set>
+			<if test="productName !=null">ProductName =
+				#{productName},
+			</if>
+			<if test="productCategory !=null">ProductCategory =
+				#{productCategory},
+			</if>
+			<if test="productCode !=null">ProductCode =
+				#{productCode},
+			</if>
+			<if test="productQuantity !=null">ProductQuantity =
+				#{productQuantity},
+			</if>
+			<if test="productDate !=null">ProductDate =
+				#{productDate},
+			</if>
+			<if test="productLowestPrice !=null">ProductLowestPrice =
+				#{productLowestPrice},
+			</if>
+			<if test="productHopefulPrice !=null">ProductHopefulPrice =
+				#{productHopefulPrice},
+			</if>
+			<if test="productImage !=null">ProductImage =
+				#{productImage},
+			</if>
+			<if test="productDesc !=null">ProductDesc =
+				#{productDesc},
+			</if>
+			<if test="productBrand !=null">ProductBrand =
+				#{productBrand},
+			</if>
+			<if test="productCondition !=null">ProductCondition =
+				#{productCondition},
+			</if>
+		</set>
+		where ProductNumber=#{productNumber}
+	</update>
+	<delete id="delete" parameterType="product">
+		delete from
+		product
+		where ProductNumber=#{productNumber}
+	</delete>
+</mapper>
