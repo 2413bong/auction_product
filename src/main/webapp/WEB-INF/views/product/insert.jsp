@@ -3,6 +3,15 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<script>
+<c:if test="${!empty iCnt}">
+	<c:if test="${iCnt eq 1}">
+		alert("저장성공");
+		location.href="/levelinfo";
+	</c:if>
+</c:if>
+
+</script>
 <style>
 input[type='file'] {
 	display: none;
@@ -53,8 +62,7 @@ input[type=file]:hover {
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="page-header">Dashboard</h1>
 		<h2 class="sub-header">Section title</h2>
-		<form id="fileForm" action="fileUpload" method="post"
-			enctype="multipart/form-data">
+		<form enctype="multipart/form-data">
 			<br />
 			<!-- 1 -->
 			<label for="productName">제품 명</label> <input type="text"
@@ -92,12 +100,11 @@ input[type=file]:hover {
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
 			<!-- 10 -->
-			<label for="productImage">제품 사진(이미지)</label>
-	<form id="fileForm" action="fileUpload" method="post" enctype="multipart/form-data">
-        <input type="file" id="fileUp" name="fileUp"/><br/><br/>
-        <input type="file" id="fileUp2" name="fileUp2"/><br/><br/>
-        <input type="button" value="전송하기" onClick="fileSubmit();">
-    </form>
+			<label for="productImage">제품 사진(이미지)</label> 
+			
+			 <input type="text"	name="tname" maxlength="33" required><br>
+				 <input	type="file" name="productImage"><br>
+			
 			<!-- 11 -->
 			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">
@@ -105,13 +112,58 @@ input[type=file]:hover {
 				<option value="canada">가전제품</option>
 				<option value="usa">뭐가 있을까</option>
 			</select>
-			<button type="button" onclick="addATProductInfo">제품 등록</button>
+			<button type="button" name="up" >업로드하기</button>
+
 		</form>
 
 	</div>
 
-		<script>
+	<script>
+	function insertATProductInfo(){
+		var productname = document.querySelector("#productname").value;
+		var productcategory = document.querySelector("#productcategory").value;
+		var productcode = document.querySelector("#productcode").value;
+		var productquantity = document.querySelector("#productquantity").value;
+		var productdate = document.querySelector("#productdate").value;
+		var productlowestprice = document.querySelector("#productlowestprice").value;
+		var producthopefulprice = document.querySelector("#producthopefulprice").value;
+		//var productimage = document.querySelector("#productimage").value;
+		var productdesc = document.querySelector("#productdesc").value;
+		var productbrand = document.querySelector("#productbrand").value;
+		var productcondition = document.querySelector("#productcondition"+).value;
+		var params = {productname:productname, productcategory:productcategory, productcode:productcode, productquantity:productquantity,
+				productdate:productdate, productlowestprice:productlowestprice,producthopefulprice:producthopefulprice,productimage:productimage,
+				productdesc:productdesc,productbrand:productbrand,productcondition:productcondition};
+		params = JSON.stringify(params);
+		
+		var au = new AjaxUtil( {
+			url : '/ATProductInfo/',
+			method: 'post',
+			param : params,
+			success : function(res){
+	            alert(res);
+			}
+		}); 
+		au.send();
+	}
+		//업로드 start
+		document.querySelector("button[name=up]").onclick = function(){
+			var form = document.querySelector("form");
+			var formData = new FormData(form);
+			var url = "/uploadproduct";
+			var method = "POST";
+
+			var xhr = new XMLHttpRequest();
 			
+			xhr.onreadystatechange = function(){
+				alert(xhr.response);
+			}
+			
+			xhr.open(method,url);
+			xhr.send(formData);
+		}
+		//업로드 end
+
 		</script>
 </body>
 </html>

@@ -1,9 +1,17 @@
-/*package com.auction.product.controller;
+package com.auction.product.controller;
 
 import java.io.File;
-import java.util.Iterator;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.auction.product.service.ATProductService;
 import com.auction.product.vo.ATProductInfo;
@@ -41,7 +47,7 @@ public class ATProductController {
 	@ResponseBody
 	public Integer insertATProductInfo(@RequestBody ATProductInfo ATProductInfo) {
 		return ATProductService.insertATProductInfo(ATProductInfo);
-	}
+	}	
 
 	@RequestMapping(value = "/ATProductInfo/{ProductNumber}", method = RequestMethod.DELETE)
 	@ResponseBody
@@ -55,47 +61,57 @@ public class ATProductController {
 		ATProductInfo.setProductNumber(ProductNumber);
 		return ATProductService.updateATProductInfo(ATProductInfo);
 	}
-//업로드
-	@RequestMapping(value = "/ajaxUpload")
-	public String ajaxUpload() {
-		return "ajaxUpload";
-	}
+	private static final int THRESHOLD_SIZE = 1024*1024*1;//1MB
+	private static final int UP_TOTAL_SIZE = 1024*1024*200;//200MB
+	private static final int UP_FILE_SIZE = 1024*1024*100;//100MB
+	
+	private static final File TEMP_REPOSITORY = new File(System.getProperty("java.io.tmpdir"));
+	
+	private static final String UP_PATH = "C:/Users/BaeJinseok/git/auction_product/src/main/resources/productImage";
+	@RequestMapping(value="/uploadproduct", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer test(HttpServletRequest request) {
+		
+		DiskFileItemFactory dfif = new DiskFileItemFactory(THRESHOLD_SIZE, TEMP_REPOSITORY);
 
-	@RequestMapping(value = "/fileUpload")
-	public String fileUp(MultipartHttpServletRequest multi) {
+		ServletFileUpload sfu = new ServletFileUpload(dfif);
+		sfu.setHeaderEncoding("utf-8");
+		sfu.setSizeMax(UP_TOTAL_SIZE);
+		sfu.setFileSizeMax(UP_FILE_SIZE);
+		try {
+			List<FileItem> fList = sfu.parseRequest(request);
+			Map<String,String> params = new HashMap<String,String>();
 
-		// 저장 경로 설정
-		String root = multi.getSession().getServletContext().getRealPath("/");
-		String path = root + "resources/img/";
-
-		String newFileName = ""; // 업로드 되는 파일명
-
-		File dir = new File(path);
-		if (!dir.isDirectory()) {
-			dir.mkdir();
-		}
-
-		Iterator<String> files = multi.getFileNames();
-		while (files.hasNext()) {
-			String uploadFile = files.next();
-
-			MultipartFile mFile = multi.getFile(uploadFile);
-			String fileName = mFile.getOriginalFilename();
-			System.out.println("실제 파일 이름 : " + fileName);
-			newFileName = System.currentTimeMillis() + "." + fileName.substring(fileName.lastIndexOf(".") + 1);
-
-			try {
-				mFile.transferTo(new File(path + newFileName));
-			} catch (Exception e) {
-				e.printStackTrace();
+			for(FileItem fi:fList) {
+				if(fi.isFormField()) {
+					params.put(fi.getFieldName(), fi.getString("utf-8"));
+				} else {
+					String fName = "/" + fi.getName();
+					String fPath = UP_PATH + fName;
+					
+					if(fi.getName().equals("")) continue;
+					
+					File sFile = new File(fPath);
+					
+					fi.write(sFile);
+					
+					params.put(fi.getFieldName(), "/resources/upload" +fName);
+				}
+				
 			}
+			
+			System.out.println(params);
+			
+		} catch (FileUploadException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		System.out.println("id : " + multi.getParameter("id"));
-		System.out.println("pw : " + multi.getParameter("pw"));
-
-		return "ajaxUpload";
+		
+		System.out.println("받아랏");
+		return 1;
 	}
-	//업로드
+
 }
-*/

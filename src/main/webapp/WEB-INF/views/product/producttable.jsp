@@ -73,7 +73,7 @@ window.addEventListener('load',function(){
 </script>
 <body>
 	검색 :
-	<input type="text" name="ATProductList">
+	<input type="text" name="atproductnumber">
 	<button>검색</button>
 	<table border="1">
 		<thead>
@@ -94,7 +94,7 @@ window.addEventListener('load',function(){
 			</tr>
 		</thead>
 		<tbody id="ATProductBody">
-
+		
 		</tbody>
 	</table>
 	<button  type="button" onclick="location.href='/url/product:insert' "target="_blank">제품 추가</button>
@@ -117,6 +117,7 @@ window.addEventListener('load',function(){
 		html += '</tr>';
 		document.querySelector('ATProductBody').insertAdjacentHTML('beforeend', html);
 	}
+
 	function saveATProductInfo() {
 		var productname = document.querySelector("#productname").value;
 		var productcategory = document.querySelector("#productcategory").value;
@@ -187,19 +188,16 @@ window.addEventListener('load',function(){
 	function deleteATProductInfo(productnumber){
 				
 			var au = new AjaxUtil( {
-//				var conf={ 이건 데이터만 가져다주는거
 				url : '/atproductinfo/'+ productnumber,
 				method:'DELETE',
 				success : function(res){
 					if(res=='1'){
 						alert('삭제완료');
-//						initList();
 						locationhref="/url/atproductinfo:list"; //기존방식 리스트를 다시 들어가는거
 
 					}
 				}
 			});
-//			var au = new AjaxUtil( {
 			au.send(); 
 	}
 	</script>
