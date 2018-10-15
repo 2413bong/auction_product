@@ -1,17 +1,17 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<script>
+
 <c:if test="${!empty iCnt}">
 	<c:if test="${iCnt eq 1}">
-		alert("저장성공");
-		location.href="/atproductInfo";
+		<script>
+			alert("저장성공");
+			location.href="/atproductInfo";
+		</script>
 	</c:if>
 </c:if>
 
-</script>
+
 <!--   --><style>
 input[type=text], select {
 	width: 60%;
@@ -92,9 +92,7 @@ button[type=button]:hover {
 			<br>
 			<!-- 11 -->
 			<label for="productImage">제품 사진(이미지)</label> 
-			   <input	type="file" name="productImage"><br>
-			   <input type="file" class="custom-file-input" id="productImage">
-               <label class="custom-file-label" for="productImage">Choose file</label>
+			   <input	type="file" name="productImage">
 			<br>
 			<button type="button" name="ATProductInfo" >업로드하기</button>
 
@@ -103,40 +101,31 @@ button[type=button]:hover {
 	</div>
 
 	<script>
-/* 	function insertATProductInfo(){
-		var form = document.querySelector('form');
-		var productname = document.querySelector("#productname").value;
-		var productcategory = document.querySelector("#productcategory").value;
-		var productcode = document.querySelector("#productcode").value;
-		var productquantity = document.querySelector("#productquantity").value;
-		var productdate = document.querySelector("#productdate").value;
-		var productlowestprice = document.querySelector("#productlowestprice").value;
-		var producthopefulprice = document.querySelector("#producthopefulprice").value;
-		//var productimage = document.querySelector("#productimage").value;
-		var productdesc = document.querySelector("#productdesc").value;
-		var productbrand = document.querySelector("#productbrand").value;
-		var productcondition = document.querySelector("#productcondition").value;
-		var params = {productname:productname, productcategory:productcategory, productcode:productcode, productquantity:productquantity,
-				productdate:productdate, productlowestprice:productlowestprice,producthopefulprice:producthopefulprice,productimage:productimage,
-				productdesc:productdesc,productbrand:productbrand,productcondition:productcondition};
-		params = JSON.stringify(params);
-		 */
-		/* var au = new AjaxUtil( {
-			url : '/ATProductInfo/insertATProductInfo',
-			method: 'post',
-			param : params,
-			success : function(res){
-	          
+	document.querySelector("button[name=ATProductInfo]").onclick = function(){
+		var formData = new FormData(this.form);
+		
+		if(dataValidation()){
+		
+		$.ajax({
+			url : '/ATProductInfo',
+			processData : false,
+			contentType : false,
+			data : formData,
+			type : 'POST',
+			success : function(){
+				location.href = '/ATProductInfo';
+				alert('ㄱㄴ?');
 			}
-		}); 
+		}
 		
-		
-	} */
+		});
+	}
+
 		//업로드 start
-		document.querySelector("button[name=ATProductInfo]").onclick = function(){
+	/* 	document.querySelector("button[name=ATProductInfo]").onclick = function(){
 			var form = document.querySelector("form");
 			var formData = new FormData(this.form);
-			var url = "/uploadproduct";
+			var url = "/ATProductInfo/insertATProductInfo";
 			var method = "POST";
 
 			var xhr = new XMLHttpRequest();
@@ -147,7 +136,8 @@ button[type=button]:hover {
 			
 			xhr.open(method,url);
 			xhr.send(formData);
-		}
+		} */
+		
 		//업로드 end
 
 		</script>
