@@ -31,7 +31,7 @@ public class FileUploadController {
         }
          
         Iterator<String> files = multi.getFileNames();
-        while(files.hasNext()){D
+        while(files.hasNext()){
             String uploadFile = files.next();
                          
             MultipartFile mFile = multi.getFile(uploadFile);
