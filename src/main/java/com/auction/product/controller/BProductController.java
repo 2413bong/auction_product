@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.auction.product.fileupload.ParseMap;
+import com.auction.product.fileupload.Util;
 import com.auction.product.service.BProductService;
 import com.auction.product.vo.ATProductInfo;
 
@@ -37,14 +40,15 @@ public class BProductController {
 	}
 	@RequestMapping(value = "/BProductInfo/{ProductNumber}", method = RequestMethod.PUT)
 	@ResponseBody
-	public Integer updateBProductInfo(@RequestBody ATProductInfo ATProductInfo, @PathVariable int ProductNumber) {
+	public Integer updateBProductInfo(MultipartHttpServletRequest request, @PathVariable int ProductNumber) {
+		ATProductInfo ATProductInfo = new ATProductInfo();
 		ATProductInfo.setProductNumber(ProductNumber);
-		return BProductService.updateBProduct(ATProductInfo);
+		return BProductService.updateBProduct((ATProductInfo)ParseMap.MapToVo(Util.saveFile(request), ATProductInfo));
 	}
 	@RequestMapping(value = "/BProductInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Integer insertBProductInfo(@RequestBody ATProductInfo ATProductInfo) {
-		return BProductService.insertBProduct(ATProductInfo);
+	public Integer insertBProductInfo(MultipartHttpServletRequest request) {
+		return BProductService.insertBProduct((ATProductInfo)ParseMap.MapToVo(Util.saveFile(request), ATProductInfo.class));
 	}
 	
 }

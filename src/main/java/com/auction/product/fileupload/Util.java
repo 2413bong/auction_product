@@ -31,8 +31,8 @@ package com.auction.product.fileupload;
 				String fileName = files.get(key).getOriginalFilename();
 				
 				if(!fileName.equals("")) {
-					String extensionName = fileName.substring(fileName.lastIndexOf("."));//확장자명 줄임
-					String lastFileName = extensionName + System.currentTimeMillis() ;//이름+업로드시간
+					String extensionName = fileName.substring(fileName.lastIndexOf("."));//확장자명 뽑아옴
+					String lastFileName = extensionName + System.currentTimeMillis() ;//이름=업로드시간+확장자명
 					File uploadFile = new File(uploadPath, lastFileName);
 					
 					try {
