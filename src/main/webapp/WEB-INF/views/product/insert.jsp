@@ -7,16 +7,12 @@
 <c:if test="${!empty iCnt}">
 	<c:if test="${iCnt eq 1}">
 		alert("저장성공");
-		location.href="/levelinfo";
+		location.href="/atproductInfo";
 	</c:if>
 </c:if>
 
 </script>
-<style>
-input[type='file'] {
-	display: none;
-}
-
+<!--   --><style>
 input[type=text], select {
 	width: 60%;
 	padding: 12px 20px;
@@ -41,28 +37,15 @@ button[type=button]:hover {
 	background-color: #45a049;
 }
 
-input[type=file] {
-	width: 60%;
-	background-color: #4CAF50;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-input[type=file]:hover {
-	background-color: #45a049;
-}
 </style>
 <body>
 
 	<h3>제품 등록 란</h3>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<h1 class="page-header">Dashboard</h1>
+		<h1 class="page-header">제품등록</h1>
 		<h2 class="sub-header">Section title</h2>
-		<form enctype="multipart/form-data">
+		
+		<form enctype="multipart/form-data" method="POST">
 			<br />
 			<!-- 1 -->
 			<label for="productName">제품 명</label> <input type="text"
@@ -99,27 +82,29 @@ input[type=file]:hover {
 			<label for="productCondition">제품 상태</label> <input type="text"
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
-			<!-- 10 -->
-			<label for="productImage">제품 사진(이미지)</label> 
-			
-			 <input type="text"	name="tname" maxlength="33" required><br>
-				 <input	type="file" name="productImage"><br>
-			
-			<!-- 11 -->
+				<!-- 10 -->
 			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">
 				<option value="australia">의류</option>
 				<option value="canada">가전제품</option>
 				<option value="usa">뭐가 있을까</option>
 			</select>
-			<button type="button" name="up" >업로드하기</button>
+			<br>
+			<!-- 11 -->
+			<label for="productImage">제품 사진(이미지)</label> 
+			   <input	type="file" name="productImage"><br>
+			   <input type="file" class="custom-file-input" id="productImage">
+               <label class="custom-file-label" for="productImage">Choose file</label>
+			<br>
+			<button type="button" name="ATProductInfo" >업로드하기</button>
 
 		</form>
 
 	</div>
 
 	<script>
-	function insertATProductInfo(){
+/* 	function insertATProductInfo(){
+		var form = document.querySelector('form');
 		var productname = document.querySelector("#productname").value;
 		var productcategory = document.querySelector("#productcategory").value;
 		var productcode = document.querySelector("#productcode").value;
@@ -130,33 +115,34 @@ input[type=file]:hover {
 		//var productimage = document.querySelector("#productimage").value;
 		var productdesc = document.querySelector("#productdesc").value;
 		var productbrand = document.querySelector("#productbrand").value;
-		var productcondition = document.querySelector("#productcondition"+).value;
+		var productcondition = document.querySelector("#productcondition").value;
 		var params = {productname:productname, productcategory:productcategory, productcode:productcode, productquantity:productquantity,
 				productdate:productdate, productlowestprice:productlowestprice,producthopefulprice:producthopefulprice,productimage:productimage,
 				productdesc:productdesc,productbrand:productbrand,productcondition:productcondition};
 		params = JSON.stringify(params);
-		
-		var au = new AjaxUtil( {
-			url : '/ATProductInfo/',
+		 */
+		/* var au = new AjaxUtil( {
+			url : '/ATProductInfo/insertATProductInfo',
 			method: 'post',
 			param : params,
 			success : function(res){
-	            alert(res);
+	          
 			}
 		}); 
-		au.send();
-	}
+		
+		
+	} */
 		//업로드 start
-		document.querySelector("button[name=up]").onclick = function(){
+		document.querySelector("button[name=ATProductInfo]").onclick = function(){
 			var form = document.querySelector("form");
-			var formData = new FormData(form);
+			var formData = new FormData(this.form);
 			var url = "/uploadproduct";
 			var method = "POST";
 
 			var xhr = new XMLHttpRequest();
 			
 			xhr.onreadystatechange = function(){
-				alert(xhr.response);
+				
 			}
 			
 			xhr.open(method,url);

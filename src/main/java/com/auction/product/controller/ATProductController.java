@@ -67,7 +67,7 @@ public class ATProductController {
 	
 	private static final File TEMP_REPOSITORY = new File(System.getProperty("java.io.tmpdir"));
 	
-	private static final String UP_PATH = "C:/Users/BaeJinseok/git/auction_product/src/main/resources/productImage";
+	private static final String UP_PATH = "C:\\Users\\BaeJinseok\\git\\auction_product\\src\\main\\webapp\\resources\\img";
 	@RequestMapping(value="/uploadproduct", method=RequestMethod.POST)
 	@ResponseBody
 	public Integer test(HttpServletRequest request) {
@@ -95,7 +95,7 @@ public class ATProductController {
 					
 					fi.write(sFile);
 					
-					params.put(fi.getFieldName(), "/resources/upload" +fName);
+					params.put(fi.getFieldName(), "/resources/img" +fName);
 				}
 				
 			}
@@ -110,7 +110,7 @@ public class ATProductController {
 			e.printStackTrace();
 		}
 		
-		System.out.println("받아랏");
+		System.out.println("업로드 됫다");
 		return 1;
 	}
 
