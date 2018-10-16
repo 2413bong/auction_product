@@ -12,7 +12,8 @@
 </c:if>
 
 
-<!--   --><style>
+<!--   -->
+<style>
 input[type=text], select {
 	width: 60%;
 	padding: 12px 20px;
@@ -36,7 +37,6 @@ button[type=button] {
 button[type=button]:hover {
 	background-color: #45a049;
 }
-
 </style>
 <body>
 
@@ -44,8 +44,8 @@ button[type=button]:hover {
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="page-header">제품등록</h1>
 		<h2 class="sub-header">Section title</h2>
-		
-		<form enctype="multipart/form-data" method="POST">
+
+		<form enctype="multipart/form-data" method="POST" id="ProductInsert">
 			<br />
 			<!-- 1 -->
 			<label for="productName">제품 명</label> <input type="text"
@@ -64,7 +64,7 @@ button[type=button]:hover {
 				id="productDate" name="productDate" placeholder="제품 등록일은 커밋하는 그순간">
 			<br>
 			<!-- 5 -->
-			<label for="productName">제품 최저가</label> <input type="text"
+			<label for="productLowestPrice">제품 최저가</label> <input type="text"
 				id="productLowestPrice" name="productLowestPrice"
 				placeholder="제품의 최저가(시작가)"> <br>
 			<!-- 6 -->
@@ -82,19 +82,17 @@ button[type=button]:hover {
 			<label for="productCondition">제품 상태</label> <input type="text"
 				id="productCondition" name="productCondition"
 				placeholder="제품의 상태(자세히)"> <br>
-				<!-- 10 -->
+			<!-- 10 -->
 			<label for="productCategory">제품 분류</label> <select
 				id="productCategory" name="productCategory">
 				<option value="australia">의류</option>
 				<option value="canada">가전제품</option>
 				<option value="usa">뭐가 있을까</option>
-			</select>
-			<br>
+			</select> <br>
 			<!-- 11 -->
-			<label for="productImage">제품 사진(이미지)</label> 
-			   <input	type="file" name="productImage">
-			<br>
-			<button type="button" name="ATProductInfo" >업로드하기</button>
+			<label for="productImage">제품 사진(이미지)</label> <input type="file"
+				name="productImage"> <br>
+			<button type="button" name="ATProductInfo">업로드하기</button>
 
 		</form>
 
@@ -120,25 +118,112 @@ button[type=button]:hover {
 		
 		});
 	}
+	    $('#ProductInsert').validate({
+	        onfocusout: false,
+	        rules: {
+	        	productName: {
+	                required: true,
+	                minlength: 1
+	            }, 
+	         
+	            	productCode: {
+		                required: true,
+		                minlength: 1
+		            }, 
+		          
+		            	productQuantity: {
+			                required: true,
+			                minlength: 1
+			            }, 
+			          
+			            	productLowestPrice: {
+				                required: true,
+				                minlength: 1
+				            }, 
+				           
+				            	productDate: {
+					                required: true,
+					                minlength: 1
+					            }, 
+					          
+					            	productHopefulPrice: {
+						                required: true,
+						                minlength: 1
+						            }, 
+						          
+						            	productDesc: {
+							                required: true,
+							                minlength: 1
+							            }, 
+							          
+							            	productBrand: {
+								                required: true,
+								                minlength: 1
+								            }, 
+								           
+								            
+	            }
+	        }, messages: {
+	        	productName: {
+	                required: "productName을 입력하세요.",
+	                minlength: $.validator.format("productName은 최소 {1} 글자 이상 입력하세요.")
+	            },
+	            productCode: {
+	                required: "productCode을 입력하세요.",
+	                minlength: $.validator.format("productCode은 최소 {1} 글자 이상 입력하세요.")
+	            },
+	            productQuantity: {
+	                required: "productQuantity을 입력하세요.",
+	                minlength: $.validator.format("productQuantity은 최소 {1} 글자 이상 입력하세요.")
+	            },
+	            productLowestPrice: {
+	                required: "productLowestPrice 입력하세요.",
+	                minlength: $.validator.format("productLowestPrice은 최소 {1} 글자 이상 입력하세요.")
+	            },
+	            productDate: {
+	                required: "productDate을 입력하세요.",
+	                minlength: $.validator.format("productDate최소 {1} 글자 이상 입력하세요.")
+	            },
+	            productHopefulPrice: {
+	                required: "productHopefulPrice을 입력하세요.",
+	                minlength: $.validator.format("productHopefulPrice은 최소 {1} 글자 이상 입력하세요.")
+	            },
+	            productDesc: {
+	                required: "productDesc 입력하세요.",
+	                minlength: $.validator.format("productDesc은 최소 {1} 글자 이상 입력하세요.")
+	            },
+	            productBrand: {
+	                required: "productBrand을 입력하세요.",
+	                minlength: $.validator.format("productBrand은 최소 {1} 글자 이상 입력하세요.")
+	            },
+	           
+	        }, errorPlacement: function (error, element) {
+	            // $(element).removeClass('error');
+	            // do nothing;
+	        }, invalidHandler: function (form, validator) {
+	            var errors = validator.numberOfInvalids();
+	            if (errors) {
+	                alert(validator.errorList[0].message);
+	                validator.errorList[0].element.focus();
+	            }
+	        }, submitHandler: function (form) {
+	            $.ajax({
+	                type: "POST",
+	                url: "/sample/ajax/ajaxJson.do",
+	                data: $(form).serialize(),
+	                dataType: "json",
+	                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+	                success: function (data) {
+	                    if (data.code == '0') {
+	                        alert('code:' + data.code + '\n' + 'msg:' + data.msg);
+	                    }
+	                }, error: function (jqXHR, textStatus, errorThrown) {
+	                    alert(failMsg + ' ' + textStatus.msg);
+	                }
+	            });
+	        }
+	  
 
-		//업로드 start
-	/* 	document.querySelector("button[name=ATProductInfo]").onclick = function(){
-			var form = document.querySelector("form");
-			var formData = new FormData(this.form);
-			var url = "/ATProductInfo/insertATProductInfo";
-			var method = "POST";
-
-			var xhr = new XMLHttpRequest();
-			
-			xhr.onreadystatechange = function(){
-				
-			}
-			
-			xhr.open(method,url);
-			xhr.send(formData);
-		} */
-		
-		//업로드 end
 
 		</script>
 </body>
