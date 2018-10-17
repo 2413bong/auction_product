@@ -28,8 +28,9 @@ public class BProductServiceImpl implements BProductService {
 
 	@Override
 	public int insertBProduct(ATProductInfo ATProductInfo) {
+		System.out.println(ATProductInfo);
 		int success =BProductDAOImpl.insertBProduct(ATProductInfo);
-
+		
 		if(success != 1) {
 			String filePath = Util.uploadPath + ATProductInfo.getProductImage();
 			

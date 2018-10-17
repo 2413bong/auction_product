@@ -12,8 +12,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="/resources/img/favi.png">
-<script src="/resources/js/AjaxUtil.js"></script>
-<title>Dashboard</title>
+
+<title>Dashboard Template for Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/resources/bootstrap/dist/css/bootstrap.min.css"
@@ -50,6 +50,10 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Dashboard</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Help</a></li>
 				</ul>
 			</div>
 		</div>
@@ -59,7 +63,22 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="/url/bproduct:list">Listview</a></li>
-					<li class="active"><a href="/url/bproduct:insert">Insert</a></li>
+					<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+					<li><a href="">Reports</a></li>
+					<li><a href="#">Analytics</a></li>
+					<li><a href="#">Export</a></li>
 				</ul>
 			</div>
+				<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="/resources/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+	<script src="/resources/bootstrap/docs/assets/js/vendor/holder.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script
+		src="/resources/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

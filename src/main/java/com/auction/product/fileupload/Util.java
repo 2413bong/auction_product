@@ -32,7 +32,7 @@ package com.auction.product.fileupload;
 				
 				if(!fileName.equals("")) {
 					String extensionName = fileName.substring(fileName.lastIndexOf("."));//확장자명 뽑아옴
-					String lastFileName = extensionName + System.currentTimeMillis() ;//이름=업로드시간+확장자명
+					String lastFileName = System.currentTimeMillis() + extensionName ;//이름=업로드시간+확장자명
 					File uploadFile = new File(uploadPath, lastFileName);
 					
 					try {

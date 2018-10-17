@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Map;
 
+
 public class ParseMap {
 	
 	 public static Object MapToVo(Map<String,Object> map,Object obj){

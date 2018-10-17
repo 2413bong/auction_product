@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.auction.product.fileupload.PM;
 import com.auction.product.fileupload.ParseMap;
 import com.auction.product.fileupload.Util;
 import com.auction.product.service.BProductService;
@@ -29,26 +31,27 @@ public class BProductController {
 		return BProductService.getBProductList(null);
 	}
 	@RequestMapping(value = "/BProductInfo/{ProductNumber}", method = RequestMethod.GET)
-	@ResponseBody
-	public ATProductInfo getBProductInfo(@PathVariable Integer ProductNumber) {
-		return BProductService.getBProductInfo(ProductNumber);
+	public ModelAndView getBProductInfo(@PathVariable Integer ProductNumber) {
+		return new ModelAndView("bproduct/view", "product", BProductService.getBProductInfo(ProductNumber));
 	}
 	@RequestMapping(value = "/BProductInfo/{ProductNumber}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public Integer deleteBProductInfo(@PathVariable int ProductNumber) {
 		return BProductService.deleteBProduct(ProductNumber);
 	}
-	@RequestMapping(value = "/BProductInfo/{ProductNumber}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/BProductInfo/{ProductNumber}", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer updateBProductInfo(MultipartHttpServletRequest request, @PathVariable int ProductNumber) {
-		ATProductInfo ATProductInfo = new ATProductInfo();
+		System.out.println(ProductNumber);
+		ATProductInfo ATProductInfo =PM.MapToVo(Util.saveFile(request), ATProductInfo.class);
 		ATProductInfo.setProductNumber(ProductNumber);
-		return BProductService.updateBProduct((ATProductInfo)ParseMap.MapToVo(Util.saveFile(request), ATProductInfo));
+		return BProductService.updateBProduct(ATProductInfo);
 	}
 	@RequestMapping(value = "/BProductInfo", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer insertBProductInfo(MultipartHttpServletRequest request) {
-		return BProductService.insertBProduct((ATProductInfo)ParseMap.MapToVo(Util.saveFile(request), ATProductInfo.class));
+		ATProductInfo ATProductInfo =PM.MapToVo(Util.saveFile(request), ATProductInfo.class);
+		return BProductService.insertBProduct(ATProductInfo);
 	}
 	
 }

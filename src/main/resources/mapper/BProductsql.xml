@@ -15,7 +15,7 @@
 	<insert id="insert" parameterType="product">
 		insert into
 
-		product(ProductNumber,productName,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
+		product(ProductNumber,ProductName,ProductCategory,ProductCode,ProductQuantity,ProductDate,ProductLowestPrice,ProductHopefulPrice,ProductImage,ProductDesc,ProductBrand,ProductCondition)
 		values(SEQ_Product_ProductNumber.nextval,#{productName},#{productCategory},#{productCode},#{productQuantity},to_char(SYSDATE,'YYYYMMDD'),#{productLowestPrice},#{productHopefulPrice},#{productImage},#{productDesc},#{productBrand},#{productCondition})
 
 	</insert>
