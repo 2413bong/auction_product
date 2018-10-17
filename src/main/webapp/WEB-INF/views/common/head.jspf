@@ -13,7 +13,11 @@
 <meta name="author" content="">
 <link rel="icon" href="/resources/img/favi.png">
 <script src="/resources/js/AjaxUtil.js"></script>
+<<<<<<< HEAD
 <title>Dashboard</title>
+=======
+<title>Dashboard Template for Bootstrap</title>
+>>>>>>> branch 'master' of https://github.com/2413bong/auction_product.git
 
 <!-- Bootstrap core CSS -->
 <link href="/resources/bootstrap/dist/css/bootstrap.min.css"
