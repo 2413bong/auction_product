@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<html>
 <c:if test="${!empty iCnt}">
 	<c:if test="${iCnt eq 1}">
 		<script>
@@ -43,7 +43,7 @@ button[type=button]:hover {
 	<h3>제품 등록 란</h3>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="page-header">제품등록</h1>
-		<h2 class="sub-header">Section title</h2>
+		
 
 		<form enctype="multipart/form-data" method="POST" id="ProductInsert">
 			<br />
